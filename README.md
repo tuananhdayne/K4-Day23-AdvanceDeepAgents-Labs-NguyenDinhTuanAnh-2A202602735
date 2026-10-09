@@ -107,3 +107,4 @@ Kết quả nằm ở `reports/survey-about-world-model.md` cùng `.sources.json
 - Mỗi lần chạy tốn token LLM và thời gian sandbox. `tokens` trong `meta.json` chỉ đếm tin nhắn của lead, chưa gồm subagent, nên chi phí thật cao hơn. `open_sandbox()` luôn dừng và xóa sandbox khi kết thúc, kể cả khi lỗi. Đừng bỏ qua nó.
 - **Không đưa bí mật vào sandbox.** Sandbox không ngăn được prompt injection hay việc đẩy dữ liệu ra mạng; một trang web độc hại có thể khiến agent chạy lệnh bên trong sandbox. Vì vậy mọi công cụ gọi mạng và mọi khóa ở lại phía host.
 - Nội dung lấy từ web là **dữ liệu không đáng tin**: agent không được làm theo chỉ dẫn nằm trong đó.
+- Nếu arXiv liên tục trả HTTP 429 trên mạng dùng chung, đặt `SKIP_ARXIV=1` trong `.env` để dùng Hugging Face Daily, Hugging Face Search và web. Gỡ biến này khi arXiv hoạt động lại.

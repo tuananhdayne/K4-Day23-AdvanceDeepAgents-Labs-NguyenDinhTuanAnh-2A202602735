@@ -1,0 +1,26 @@
+{
+  "topic": "survey about world model",
+  "model": "ag/gemini-3.7-flash-medium",
+  "elapsed_s": 472.4,
+  "subagent_calls": 8,
+  "tool_calls": {
+    "write_todos": 6,
+    "execute": 8,
+    "read_file": 13,
+    "task": 8,
+    "ls": 3,
+    "write_file": 2,
+    "edit_file": 4
+  },
+  "tokens": {
+    "input": 906428,
+    "output": 11918
+  },
+  "n_sources": 19,
+  "source_families": [
+    "hf-daily",
+    "hf-search",
+    "web"
+  ],
+  "repair_elapsed_s": 388.2
+}
