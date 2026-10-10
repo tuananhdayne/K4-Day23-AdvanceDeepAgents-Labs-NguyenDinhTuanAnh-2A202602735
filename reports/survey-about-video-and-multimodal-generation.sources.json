@@ -25,6 +25,14 @@
   },
   {
     "n": 4,
+    "id": "2503.20314",
+    "url": "https://huggingface.co/papers/2503.20314",
+    "title": "Wan: Open Advanced Large-Scale Video Generative Models",
+    "date": "2025-03-26",
+    "source": "hf-search"
+  },
+  {
+    "n": 5,
     "id": "2312.14125",
     "url": "https://huggingface.co/papers/2312.14125",
     "title": "VideoPoet: Large Language Model for Zero-Shot Video Generation",
@@ -32,20 +40,12 @@
     "source": "hf-search"
   },
   {
-    "n": 5,
+    "n": 6,
     "id": "2404.02905",
     "url": "https://huggingface.co/papers/2404.02905",
     "title": "Visual Autoregressive Modeling: Scalable Image Generation via Next-Scale Prediction",
     "date": "2024-04-03",
     "source": "hf-search"
-  },
-  {
-    "n": 6,
-    "id": "https://arxiv.org/html/2610.00812",
-    "url": "https://arxiv.org/html/2610.00812",
-    "title": "Video Generation Models: Survey of Post-Training, Alignment",
-    "date": "2026-09-30",
-    "source": "web"
   },
   {
     "n": 7,
@@ -121,14 +121,6 @@
   },
   {
     "n": 16,
-    "id": "2512.09299",
-    "url": "https://huggingface.co/papers/2512.09299",
-    "title": "VABench: Comprehensive Benchmark for Audio-Video Generation",
-    "date": "2025-12-10",
-    "source": "hf-search"
-  },
-  {
-    "n": 17,
     "id": "2502.10248",
     "url": "https://huggingface.co/papers/2502.10248",
     "title": "Step-Video-T2V Technical Report: Practice, Challenges, Future of Video Foundation Model",
@@ -136,19 +128,27 @@
     "source": "hf-search"
   },
   {
-    "n": 18,
-    "id": "2503.20314",
-    "url": "https://huggingface.co/papers/2503.20314",
-    "title": "Wan: Open Advanced Large-Scale Video Generative Models",
-    "date": "2025-03-26",
-    "source": "hf-search"
+    "n": 17,
+    "id": "https://arxiv.org/html/2610.00812",
+    "url": "https://arxiv.org/html/2610.00812",
+    "title": "Video Generation Models: Survey of Post-Training, Alignment",
+    "date": "2026-09-30",
+    "source": "web"
   },
   {
-    "n": 19,
+    "n": 18,
     "id": "https://arxiv.org/html/2507.16869v1",
     "url": "https://arxiv.org/html/2507.16869v1",
     "title": "Controllable Video Generation: A Survey",
     "date": "2025-07-22",
     "source": "web"
+  },
+  {
+    "n": 19,
+    "id": "2512.09299",
+    "url": "https://huggingface.co/papers/2512.09299",
+    "title": "VABench: Comprehensive Benchmark for Audio-Video Generation",
+    "date": "2025-12-10",
+    "source": "hf-search"
   }
 ]

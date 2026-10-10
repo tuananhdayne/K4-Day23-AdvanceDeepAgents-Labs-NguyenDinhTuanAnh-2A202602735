@@ -1,69 +1,49 @@
 # Survey of Video and Multimodal Generation: Architectures, Evaluation, Efficiency, and Frontier Trends
 
 ## TL;DR
-- Modern video generation has broadly transitioned from raw pixel-space cascaded 2D/3D UNets toward a standard tripartite architecture combining Causal 3D Variational Autoencoders (VAEs), Flow-Matching Diffusion Transformers (DiTs), and unified multimodal conditioning [1][2][3].
-- Discrete visual autoregression and next-scale prediction offer unified next-token representations across text, video, and audio modalities, though continuous DiTs remain dominant for high perceptual fidelity and scaling [4][5][6][7].
-- Evaluation methodologies have shifted from distribution metrics (FVD, IS) toward multidimensional human-aligned suites (VBench, EvalCrafter) and intrinsic physical reasoning benchmarks (VBench-2.0, WorldModelBench), revealing that visual quality correlates poorly (r = 0.28) with true physical consistency [8][9][10][11].
-- Inference acceleration leverages training-free timestep-aware caching (TeaCache) and post-training mixed-precision quantization (QuantCache) to deliver 2x–6x speedups with negligible quality loss [12][13].
-- Multimodal safety alignment faces unique temporal dynamics, while frontier open research expands toward 3D/4D dynamic world models and synchronized audio-visual co-generation [14][15][16].
+- Video models combine causal 3D autoencoders with flow-matching transformers to generate compressed spacetime tokens efficiently [1][2][3][4].
+- Discrete autoregression unifies video with language models, while continuous diffusion transformers provide superior visual detail [5][6][7].
+- Evaluation has shifted from distribution metrics to physical tests, showing that visual quality correlates weakly with physical accuracy [8][9][10][11].
+- Layer-skipping caches, mixed-precision quantization, and latent monitoring reduce inference latency and block temporal safety exploits [12][13][14].
 
 ## Background
-Early visual generative models relied heavily on Generative Adversarial Networks (GANs) and pixel-space cascaded diffusion pipelines, such as Make-A-Video and Imagen Video [2]. While pixel-based diffusion models directly denoise raw video volumes and maintain tight text alignment, they impose exorbitant compute and memory overheads that restrict scalability across high resolutions and long frame horizons [2].
+Early video synthesis relied on generative adversarial networks and cascaded pixel-space diffusion models [2]. Denoising raw pixel arrays preserved prompt details, but processing full spacetime volumes demanded excessive memory and compute [2]. These limits restricted early systems to low frame rates, small resolutions, and short clips [2].
 
-To overcome these computational bottlenecks, the field transitioned to Latent Video Diffusion Models, decoupling spatial-temporal compression from generative sequence modeling [2]. By compressing high-dimensional video arrays into compact continuous latent spaces via 3D VAEs, foundation models can scale training compute efficiently [1][2][3]. Concurrently, the success of large language models inspired discrete visual tokenization and autoregressive generative modeling [4][5][7]. Today, video and multimodal generation serves as the primary backbone for creative media synthesis, autonomous agent simulation, and physics-grounded world modeling [3][11][15].
+Modern frameworks resolve this bottleneck by splitting spatiotemporal compression from sequence generation [2][3]. Causal 3D autoencoders compress raw video into compact continuous latents before transformer backbones perform generative denoising [1][3][4]. In parallel, language modeling inspired discrete visual tokenization and autoregressive next-token synthesis [5][6][7]. Video models now serve as engines for creative media, simulation, and world modeling [3][11][15].
 
-## Architectural Foundations: Causal 3D VAEs and Flow-Matching DiTs
-The prevailing architecture across modern frontier video generators combines a high-compression Causal 3D VAE with a spatiotemporal Diffusion Transformer (DiT) operating under Flow Matching objectives [1][17][18][3].
+## Latent Video Transformers and Flow Matching
+Spatiotemporal compression relies on causal 3D autoencoders that compress video across space and time [1][3]. CogVideoX compresses latents fourfold temporally and eightfold spatially [1]. Step-Video-T2V achieves eightfold temporal and sixteenfold spatial compression using causal 3D convolutions [16]. To prevent future frames from corrupting earlier states during streaming, Wan-VAE restricts receptive fields to current and past frames [4][3]. This causal design limits memory use and enables smooth decompression [4].
 
-### Spatiotemporal Causal 3D VAEs
-Raw video tensors $\mathbf{V} \in \mathbb{R}^{T \times H \times W \times C}$ are compressed by 3D VAEs across spatial and temporal dimensions into latent representations $\mathbf{Z} \in \mathbb{R}^{t \times h \times w \times c}$ [1][3]. CogVideoX employs a customized 3D VAE compressing $4\times$ temporally and $8\times$ spatially [1]. Step-Video-T2V introduces a Deep Compression Video-VAE integrating Causal 3D Convolutional Modules and Dual-Path Latent Fusion to achieve $8\times$ temporal and $16\times 16$ spatial downsampling [17]. WAN-VAE in the Wan2.1 family utilizes causal temporal caching and block encoding, strictly restricting receptive fields to $\tau \le t$ to eliminate future temporal leakage while preserving memory efficiency during streaming decompression [18][3].
+Within latent space, generative modeling centers on diffusion transformers paired with flow matching [1][16][4]. Spatiotemporal latents are flattened into tokens and processed through attention layers [1][4]. Step-Video-T2V scales full attention to 30 billion parameters, while Wan pairs cross-attention with umT5 and Qwen2-VL embeddings [16][4]. CogVideoX uses an expert transformer with adaptive normalization to link text and visual tokens bidirectionally [1]. Rather than following curved diffusion schedules, flow matching builds straight trajectories that reach high fidelity in fewer steps [3][16][4].
 
-### Diffusion Transformers and Flow Matching
-Latent representations are sliced into $p \times p \times q$ spacetime patch tokens and processed via full spatiotemporal attention or single-stream cross-attention architectures [1][18][3]. Wan adopts a single-stream DiT with cross-attention modules conditioned on umT5 and Qwen2-VL multimodal embeddings [18], whereas CogVideoX utilizes an Expert Transformer with Adaptive Layer Normalization (AdaLN) for bidirectional text-visual fusion [1]. Step-Video-T2V scales 3D full-attention DiT parameters up to 30 billion under the Flow Matching framework [17]. Flow Matching (rectified flow / optimal transport paths) replaces classical DDPM/DDIM schedules, establishing straighter ODE trajectories that dramatically reduce required denoising steps [17][18][3].
+## Discrete Autoregressive and Multi-Scale Generation
+Discrete autoregressive architectures cast video generation as sequential token prediction [5][7]. VideoPoet trains a decoder-only language model on discrete tokens from MAGVIT-v2, supporting text-to-video, editing, and video-to-audio tasks in one system [5]. HiTVideo adds hierarchical causal tokenizers that compress spacetime volumes by an extra factor of eight, predicting broad layouts before filling in fine details [7]. These discrete setups bring video generation directly into multimodal language frameworks [5][7].
 
-## Discrete Autoregressive and Next-Scale Modeling
-In parallel with continuous diffusion transformers, autoregressive architectures treat visual and multimodal generation as sequential next-token or next-scale prediction [4][5][6][7].
+To bypass raster-scan latency in token prediction, visual autoregressive modeling generates feature maps scale by scale from coarse to fine [6]. This next-scale method matches continuous diffusion quality while keeping exact likelihood training [6]. In parallel, hybrid architectures like CausVid combine distribution matching distillation with key-value caching [17][18]. These hybrid pipelines deliver real-time streaming video with fast autoregressive sampling [17][18].
 
-### Multimodal Next-Token Prediction
-VideoPoet demonstrates zero-shot video generation, editing, and video-to-audio synthesis using a decoder-only language model over discrete tokens discretized by MAGVIT-v2 with Lookup-Free Quantization (LFQ) [4]. HiTVideo implements hierarchical 3D Causal VAEs with LFQ to provide an additional $8\times$ spatiotemporal compression ratio, generating coarse semantic layouts at top codebook tiers before progressively synthesizing high-frequency details [7].
+## Evaluation from Visual Quality to Physical Faithfulness
+Video evaluation has moved away from distribution metrics like Fréchet Video Distance and Inception Score [8][10]. These older metrics measure global feature spreads in frozen spaces, missing motion dynamics, prompt adherence, and temporal stability [8][10]. Modern benchmark suites break video quality into isolated dimensions [8][10]. VBench and VBench++ evaluate 16 distinct dimensions including motion smoothness, temporal flickering, subject consistency, and text alignment [8]. EvalCrafter combines 17 objective metrics using optical flow tools, aesthetic scorers, and vision-language models grounded in human ratings [10].
 
-### Next-Scale Prediction and Hybrid Distillation
-Visual Autoregressive Modeling (VAR) introduces next-scale prediction, where autoregressive models predict entire multi-scale feature maps from coarse to fine rather than raster-scan sequences, matching or exceeding DiT performance and bridging discrete token modeling with diffusion-like multi-scale refinement [5]. Furthermore, hybrid causal diffusion architectures (e.g., CausVid) leverage Distribution Matching Distillation (DMD) and KV caching to enable continuous streaming generation with autoregressive inference efficiency [19][2][6].
+Recent benchmarks also test whether video generators follow physical laws [9][11]. VBench-2.0 assesses mechanical, thermal, and phase-change consistency using optical flow tracking [9]. WorldModelBench tests systems across 56 physical domains, including gravity, fluid dynamics, and collision physics [11]. The benchmark revealed that aesthetic quality correlates weakly with physical realism, showing a correlation coefficient of r = 0.28 [11]. Video models often produce sharp scenes that violate basic physical principles [11].
 
-## Evaluation Methodologies: From Perceptual Quality to Physical Faithfulness
-Standard video evaluation historically relied on Fréchet Video Distance (FVD) and Inception Score (IS), which evaluate distribution distances in frozen feature spaces but correlate weakly with human visual judgment and temporal dynamics [8][10].
+## Inference Acceleration and Temporal Safety Alignment
+Iterative denoising in large video transformers creates heavy computational costs at inference [12][13]. TeaCache addresses this by tracking output similarity across consecutive transformer passes [12]. By estimating feature changes from timestep embeddings, TeaCache skips redundant transformer layers when latent differences are minor [12]. It yields 1.86x to 6.83x speedups on models like Open-Sora, Latte, Wan2.1, and CogVideoX while keeping quality drops below 0.1% on VBench [12]. Alongside caching, QuantCache applies mixed-precision quantization across attention maps, suppressing activation spikes to fit high-resolution generation onto constrained hardware [13].
 
-### Multi-Dimensional Human-Aligned Benchmarks
-VBench and VBench++ decompose video evaluation into 16 disentangled hierarchical dimensions covering Video Quality (temporal flickering, motion smoothness, dynamic degree, subject consistency) and Video-Condition Consistency (spatial relationship, human action, object class) [8]. EvalCrafter aggregates 17 objective metrics across visual, content, motion, and text-alignment axes using FlowNet/RAFT, DOVER, and BLIP-2/CLIP, incorporating human-calibrated regression coefficients [10].
-
-### Physical Consistency and World Modeling Benchmarks
-Recent benchmarks assess whether generative video models function as physically faithful world simulators [9][11]. VBench-2.0 establishes intrinsic faithfulness evaluations across mechanical, thermal, and phase-transition state changes, measuring 3D/4D geometric consistency through SIFT/FLANN keypoint matching, RANSAC filtering, and RAFT optical flow normalization [9]. WorldModelBench stress-tests models across 56 subdomains against 5 fundamental physical principles: Newton's First Law, solid mechanics, fluid mechanics, object impenetrability, and gravity [11]. Crucially, WorldModelBench demonstrates that visual aesthetic scores exhibit very low correlation ($r = 0.28$) with physical law adherence, showing that visually pleasing models frequently violate real-world dynamics [11].
-
-## Inference Acceleration and Efficiency Optimization
-Deploying large video foundation models requires substantial compute and memory optimizations for interactive generation [12][13].
-
-### Timestep-Aware DiT Caching
-Timestep Embedding Aware Cache (TeaCache) exploits temporal redundancy across DiT denoising timesteps [12]. By estimating output differences from timestep-embedding modulated inputs via polynomial curve fitting, TeaCache dynamically skips redundant transformer blocks when relative L1 distance is below a calibrated threshold [12]. TeaCache yields $4.41\times$ to $6.83\times$ acceleration on Open-Sora-Plan and $1.86\times$ to $3.28\times$ on Latte/Open-Sora with less than $0.1\%$ VBench degradation, seeing broad adoption across Wan2.1, HunyuanVideo, Cosmos, and CogVideoX [12].
-
-### Quantization and Memory Optimization
-QuantCache integrates post-training low-bit quantization with hierarchical latent and layer caching [13]. By applying importance-guided mixed-precision quantization (INT8/INT4/FP6) across 3D spatiotemporal attention maps, QuantCache mitigates activation outliers caused by temporal dynamics, enabling high-resolution video generation on edge and consumer hardware [13].
-
-## Safety Alignment and Temporal Defense
-Multimodal safety alignment in video models introduces challenges distinct from static text-to-image systems [14]. Research reveals that static text filters fail against temporal composition attacks and implicit prompt jailbreaks where harmful semantics emerge dynamically across sequential frames [14]. Addressing these vulnerabilities requires Latent Variable Defense (LVD), automated adversarial red-teaming pipelines (e.g., DREAM, ART), and runtime anomaly filtering to steer latent trajectories away from unsafe manifolds during iterative denoising [14].
+Safety alignment brings unique challenges in video because temporal combinations create risks unseen in static images [14]. Standard text filters often miss temporal composition attacks, where benign individual actions combine across frames to create unsafe outcomes [14]. Defenses like Latent Variable Defense and automated red-teaming detect harmful trajectories within diffusion [14]. Runtime anomaly checks steer latent states back to safe paths, preserving safety across dynamic video sequences [14].
 
 ## Trends and open problems
-- **Interactive 3D and 4D World Models**: Transitioning from monocular video generation to interactive 4D world simulation (TeleWorld, SWiT-4D, 4DWorldBench) combining sliding-window transformers, 3D Gaussian Splatting, and action conditioning to maintain long-horizon spatial-temporal consistency [11][15].
-- **Synchronized Audio-Video Co-Generation**: Joint generation of synchronized multi-modal audio and video streams (VABench) while overcoming cross-attention alignment bottlenecks, acoustic hallucination, and multi-shot narrative cut transitions [16].
-- **Physics-Grounded Post-Training Alignment**: Integrating Direct Preference Optimization (Video-DPO) and physics-informed reinforcement learning to penalize dynamic law violations and enhance spatiotemporal coherence [17][6][11].
-- **Real-Time Streaming Generation**: Bridging full-sequence diffusion with causal autoregressive distillation (DMD, KV caching) to achieve low-latency interactive video streaming without temporal error accumulation [19][6][7].
+- **Interactive 4D World Modeling**: Advancing from 2D video generation into interactive 3D and 4D environments using action conditioning and 3D Gaussians for spatial consistency [11][15].
+- **Synchronized Multimodal Co-Generation**: Generating paired audio and video streams with precise temporal alignment while eliminating cross-modal bottlenecks and audio hallucinations [19].
+- **Physics-Informed Post-Training**: Applying Direct Preference Optimization and reinforcement learning to penalize physical errors and teach models accurate dynamics [17][11][16].
+- **Real-Time Interactive Streaming**: Combining causal compression, key-value caching, and distribution distillation to generate continuous video streams with minimal latency [17][7][18].
 
 ## References
 [1] CogVideoX: Text-to-Video Diffusion Models with An Expert Transformer. hf-search. https://huggingface.co/papers/2408.06072 (2024-08-12)
 [2] Survey of Video Diffusion Models: Foundations, Methodologies, Applications, Trends. web. https://arxiv.org/html/2504.16081v3 (2025-04-20)
 [3] From Pixels to Worlds: Survey on High-fidelity Video Generation. web. https://library.imaging.org/admin/apis/public/api/ist/website/downloadArticle/ei/38/7/IMAGE-266 (2025-01-15)
-[4] VideoPoet: Large Language Model for Zero-Shot Video Generation. hf-search. https://huggingface.co/papers/2312.14125 (2023-12-21)
-[5] Visual Autoregressive Modeling: Scalable Image Generation via Next-Scale Prediction. hf-search. https://huggingface.co/papers/2404.02905 (2024-04-03)
-[6] Video Generation Models: Survey of Post-Training, Alignment. web. https://arxiv.org/html/2610.00812 (2026-09-30)
+[4] Wan: Open Advanced Large-Scale Video Generative Models. hf-search. https://huggingface.co/papers/2503.20314 (2025-03-26)
+[5] VideoPoet: Large Language Model for Zero-Shot Video Generation. hf-search. https://huggingface.co/papers/2312.14125 (2023-12-21)
+[6] Visual Autoregressive Modeling: Scalable Image Generation via Next-Scale Prediction. hf-search. https://huggingface.co/papers/2404.02905 (2024-04-03)
 [7] HiTVideo: Hierarchical Tokenizers for Enhancing Text-to-Video Generation with Autoregressive LLMs. web. https://arxiv.org/html/2503.11513v1 (2025-03-18)
 [8] VBench++: Comprehensive Versatile Benchmark Suite for Video Generative Models. hf-daily. https://huggingface.co/papers/2411.13503 (2024-11-20)
 [9] VBench-2.0: Advancing Video Generation Benchmark Suite for Intrinsic Faithfulness. hf-search. https://huggingface.co/papers/2503.21755 (2025-03-27)
@@ -73,7 +53,7 @@ Multimodal safety alignment in video models introduces challenges distinct from 
 [13] QuantCache: Adaptive Importance-Guided Quantization with Hierarchical Latent Layer Caching. hf-search. https://huggingface.co/papers/2503.06545 (2025-03-09)
 [14] Towards Understanding Unsafe Video Generation. hf-search. https://huggingface.co/papers/2407.12581 (2024-07-17)
 [15] 4DWorldBench: Comprehensive Evaluation Framework for 3D/4D World Generation Models. hf-search. https://huggingface.co/papers/2511.19836 (2025-11-25)
-[16] VABench: Comprehensive Benchmark for Audio-Video Generation. hf-search. https://huggingface.co/papers/2512.09299 (2025-12-10)
-[17] Step-Video-T2V Technical Report: Practice, Challenges, Future of Video Foundation Model. hf-search. https://huggingface.co/papers/2502.10248 (2025-02-14)
-[18] Wan: Open Advanced Large-Scale Video Generative Models. hf-search. https://huggingface.co/papers/2503.20314 (2025-03-26)
-[19] Controllable Video Generation: A Survey. web. https://arxiv.org/html/2507.16869v1 (2025-07-22)
+[16] Step-Video-T2V Technical Report: Practice, Challenges, Future of Video Foundation Model. hf-search. https://huggingface.co/papers/2502.10248 (2025-02-14)
+[17] Video Generation Models: Survey of Post-Training, Alignment. web. https://arxiv.org/html/2610.00812 (2026-09-30)
+[18] Controllable Video Generation: A Survey. web. https://arxiv.org/html/2507.16869v1 (2025-07-22)
+[19] VABench: Comprehensive Benchmark for Audio-Video Generation. hf-search. https://huggingface.co/papers/2512.09299 (2025-12-10)

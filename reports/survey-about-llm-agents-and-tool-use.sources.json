@@ -33,118 +33,6 @@
   },
   {
     "n": 5,
-    "id": "2303.11366",
-    "url": "https://huggingface.co/papers/2303.11366",
-    "title": "Reflexion: Language Agents with Verbal Reinforcement Learning",
-    "date": "2023-03-20",
-    "source": "hf-search"
-  },
-  {
-    "n": 6,
-    "id": "2305.10601",
-    "url": "https://huggingface.co/papers/2305.10601",
-    "title": "Tree of Thoughts: Deliberate Problem Solving with Large Language Models",
-    "date": "2023-05-17",
-    "source": "hf-search"
-  },
-  {
-    "n": 7,
-    "id": "2310.04406",
-    "url": "https://huggingface.co/papers/2310.04406",
-    "title": "Language Agent Tree Search: Reasoning, Acting, Planning in Language Models",
-    "date": "2023-10-06",
-    "source": "hf-search"
-  },
-  {
-    "n": 8,
-    "id": "2308.00352",
-    "url": "https://huggingface.co/papers/2308.00352",
-    "title": "MetaGPT: Meta Programming for Multi-Agent Collaborative Framework",
-    "date": "2023-08-01",
-    "source": "hf-search"
-  },
-  {
-    "n": 9,
-    "id": "2308.08155",
-    "url": "https://huggingface.co/papers/2308.08155",
-    "title": "AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation Framework",
-    "date": "2023-08-16",
-    "source": "hf-search"
-  },
-  {
-    "n": 10,
-    "id": "2307.07924",
-    "url": "https://huggingface.co/papers/2307.07924",
-    "title": "Communicative Agents for Software Development",
-    "date": "2023-07-16",
-    "source": "hf-search"
-  },
-  {
-    "n": 11,
-    "id": "2307.13854",
-    "url": "https://huggingface.co/papers/2307.13854",
-    "title": "WebArena: A Realistic Web Environment for Building Autonomous Agents",
-    "date": "2023-07-25",
-    "source": "hf-search"
-  },
-  {
-    "n": 12,
-    "id": "2311.12983",
-    "url": "https://huggingface.co/papers/2311.12983",
-    "title": "GAIA: a benchmark for General AI Assistants",
-    "date": "2023-11-21",
-    "source": "hf-search"
-  },
-  {
-    "n": 13,
-    "id": "2310.06770",
-    "url": "https://huggingface.co/papers/2310.06770",
-    "title": "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?",
-    "date": "2023-10-10",
-    "source": "hf-search"
-  },
-  {
-    "n": 14,
-    "id": "2403.02691",
-    "url": "https://huggingface.co/papers/2403.02691",
-    "title": "InjecAgent: Benchmarking Indirect Prompt Injections in Tool-Integrated Large Language Model Agents",
-    "date": "2024-03-05",
-    "source": "hf-search"
-  },
-  {
-    "n": 15,
-    "id": "2410.09024",
-    "url": "https://huggingface.co/papers/2410.09024",
-    "title": "AgentHarm: A Benchmark for Measuring Harmfulness of LLM Agents",
-    "date": "2024-10-11",
-    "source": "hf-search"
-  },
-  {
-    "n": 16,
-    "id": "2609.32691",
-    "url": "https://huggingface.co/papers/2609.32691",
-    "title": "Silent Failures in Agentic Security Evaluation: A Validated Harness for Tool-Call Mediation Under Indirect Prompt Injection",
-    "date": "2026-09-26",
-    "source": "hf-search"
-  },
-  {
-    "n": 17,
-    "id": "berkeley-rdi-breaking-benchmarks-2025",
-    "url": "https://rdi.berkeley.edu/blog/trustworthy-benchmarks-cont/",
-    "title": "How We Broke Top AI Agent Benchmarks: What Comes Next",
-    "date": "2025",
-    "source": "web"
-  },
-  {
-    "n": 18,
-    "id": "10.1145/3832165",
-    "url": "https://dl.acm.org/doi/pdf/10.1145/3832165",
-    "title": "AgentBreaker: Evaluating Context-Aware Indirect Prompt Injection Risks in Modern Web Agents",
-    "date": "2025",
-    "source": "web"
-  },
-  {
-    "n": 19,
     "id": "2305.15334",
     "url": "https://huggingface.co/papers/2305.15334",
     "title": "Gorilla: Large Language Model Connected with Massive APIs",
@@ -152,7 +40,31 @@
     "source": "hf-search"
   },
   {
-    "n": 20,
+    "n": 6,
+    "id": "2303.11366",
+    "url": "https://huggingface.co/papers/2303.11366",
+    "title": "Reflexion: Language Agents with Verbal Reinforcement Learning",
+    "date": "2023-03-20",
+    "source": "hf-search"
+  },
+  {
+    "n": 7,
+    "id": "2305.10601",
+    "url": "https://huggingface.co/papers/2305.10601",
+    "title": "Tree of Thoughts: Deliberate Problem Solving with Large Language Models",
+    "date": "2023-05-17",
+    "source": "hf-search"
+  },
+  {
+    "n": 8,
+    "id": "2310.04406",
+    "url": "https://huggingface.co/papers/2310.04406",
+    "title": "Language Agent Tree Search: Reasoning, Acting, Planning in Language Models",
+    "date": "2023-10-06",
+    "source": "hf-search"
+  },
+  {
+    "n": 9,
     "id": "2511.02424",
     "url": "https://huggingface.co/papers/2511.02424",
     "title": "ReAcTree: Hierarchical LLM Agent Trees with Control Flow for Long-Horizon Task Planning",
@@ -160,11 +72,99 @@
     "source": "hf-search"
   },
   {
-    "n": 21,
+    "n": 10,
     "id": "2610.11794",
     "url": "https://huggingface.co/papers/2610.11794",
     "title": "Memento 3: Model-Based Recursive Self-Improvement through Reflective Rulebooks",
     "date": "2026-10-08",
     "source": "hf-daily"
+  },
+  {
+    "n": 11,
+    "id": "2308.00352",
+    "url": "https://huggingface.co/papers/2308.00352",
+    "title": "MetaGPT: Meta Programming for Multi-Agent Collaborative Framework",
+    "date": "2023-08-01",
+    "source": "hf-search"
+  },
+  {
+    "n": 12,
+    "id": "2308.08155",
+    "url": "https://huggingface.co/papers/2308.08155",
+    "title": "AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation Framework",
+    "date": "2023-08-16",
+    "source": "hf-search"
+  },
+  {
+    "n": 13,
+    "id": "2307.07924",
+    "url": "https://huggingface.co/papers/2307.07924",
+    "title": "Communicative Agents for Software Development",
+    "date": "2023-07-16",
+    "source": "hf-search"
+  },
+  {
+    "n": 14,
+    "id": "2307.13854",
+    "url": "https://huggingface.co/papers/2307.13854",
+    "title": "WebArena: A Realistic Web Environment for Building Autonomous Agents",
+    "date": "2023-07-25",
+    "source": "hf-search"
+  },
+  {
+    "n": 15,
+    "id": "2311.12983",
+    "url": "https://huggingface.co/papers/2311.12983",
+    "title": "GAIA: a benchmark for General AI Assistants",
+    "date": "2023-11-21",
+    "source": "hf-search"
+  },
+  {
+    "n": 16,
+    "id": "2310.06770",
+    "url": "https://huggingface.co/papers/2310.06770",
+    "title": "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?",
+    "date": "2023-10-10",
+    "source": "hf-search"
+  },
+  {
+    "n": 17,
+    "id": "2403.02691",
+    "url": "https://huggingface.co/papers/2403.02691",
+    "title": "InjecAgent: Benchmarking Indirect Prompt Injections in Tool-Integrated Large Language Model Agents",
+    "date": "2024-03-05",
+    "source": "hf-search"
+  },
+  {
+    "n": 18,
+    "id": "2410.09024",
+    "url": "https://huggingface.co/papers/2410.09024",
+    "title": "AgentHarm: A Benchmark for Measuring Harmfulness of LLM Agents",
+    "date": "2024-10-11",
+    "source": "hf-search"
+  },
+  {
+    "n": 19,
+    "id": "2609.32691",
+    "url": "https://huggingface.co/papers/2609.32691",
+    "title": "Silent Failures in Agentic Security Evaluation: A Validated Harness for Tool-Call Mediation Under Indirect Prompt Injection",
+    "date": "2026-09-26",
+    "source": "hf-search"
+  },
+  {
+    "n": 20,
+    "id": "berkeley-rdi-breaking-benchmarks-2025",
+    "url": "https://rdi.berkeley.edu/blog/trustworthy-benchmarks-cont/",
+    "title": "How We Broke Top AI Agent Benchmarks: What Comes Next",
+    "date": "2025",
+    "source": "web"
+  },
+  {
+    "n": 21,
+    "id": "10.1145/3832165",
+    "url": "https://dl.acm.org/doi/pdf/10.1145/3832165",
+    "title": "AgentBreaker: Evaluating Context-Aware Indirect Prompt Injection Risks in Modern Web Agents",
+    "date": "2025",
+    "source": "web"
   }
 ]

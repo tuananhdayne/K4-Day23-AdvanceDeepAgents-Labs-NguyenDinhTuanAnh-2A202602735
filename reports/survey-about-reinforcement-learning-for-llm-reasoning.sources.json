@@ -17,22 +17,6 @@
   },
   {
     "n": 3,
-    "id": "2507.04136",
-    "url": "https://dl.acm.org/doi/full/10.1145/3834858",
-    "title": "A Technical Survey of Reinforcement Learning Techniques for Large Language Models",
-    "date": "2026-09-29",
-    "source": "web"
-  },
-  {
-    "n": 4,
-    "id": "2508.08221",
-    "url": "https://arxiv.org/html/2508.08221",
-    "title": "Part I: Tricks or Traps? A Deep Dive into RL for LLM Reasoning",
-    "date": "2025-08-11",
-    "source": "web"
-  },
-  {
-    "n": 5,
     "id": "2501.10799",
     "url": "https://huggingface.co/papers/2501.10799",
     "title": "Step-KTO: Optimizing Mathematical Reasoning through Stepwise Binary Feedback",
@@ -40,23 +24,7 @@
     "source": "hf-daily"
   },
   {
-    "n": 6,
-    "id": "lightman2023letsverify",
-    "url": "https://cdn.openai.com/improving-mathematical-reasoning-with-process-supervision/Lets%5FVerify%5FStep%5Fby%5FStep.pdf",
-    "title": "Let’s Verify Step by Step",
-    "date": "2023-05-31",
-    "source": "web"
-  },
-  {
-    "n": 7,
-    "id": "2026.acl-long.163",
-    "url": "https://aclanthology.org/2026.acl-long.163.pdf",
-    "title": "A Survey of Process Reward Models: From Outcome Signals to Process Supervisions for Large Language Models",
-    "date": "2026-01-01",
-    "source": "web"
-  },
-  {
-    "n": 8,
+    "n": 4,
     "id": "2410.08146",
     "url": "https://arxiv.gg/abs/2410.08146",
     "title": "Rewarding Progress: Scaling Automated Process Verifiers for LLM Reasoning",
@@ -64,23 +32,7 @@
     "source": "web"
   },
   {
-    "n": 9,
-    "id": "2509.09284",
-    "url": "https://huggingface.co/papers/2509.09284",
-    "title": "Tree-OPO: Off-policy Monte Carlo Tree-Guided Advantage Optimization for Multistep Reasoning",
-    "date": "2025-09-11",
-    "source": "hf-search"
-  },
-  {
-    "n": 10,
-    "id": "2406.06592",
-    "url": "https://huggingface.co/papers/2406.06592",
-    "title": "Improve Mathematical Reasoning in Language Models by Automated Process Supervision",
-    "date": "2024-06-05",
-    "source": "hf-search"
-  },
-  {
-    "n": 11,
+    "n": 5,
     "id": "2601.17223",
     "url": "https://huggingface.co/papers/2601.17223",
     "title": "Beyond Outcome Verification: Verifiable Process Reward Models for Structured Reasoning",
@@ -88,31 +40,7 @@
     "source": "hf-search"
   },
   {
-    "n": 12,
-    "id": "2510.00915v3",
-    "url": "https://arxiv.org/html/2510.00915v3",
-    "title": "Reinforcement Learning with Verifiable yet Noisy Rewards under Imperfect Verifiers",
-    "date": "2025-10-01",
-    "source": "web"
-  },
-  {
-    "n": 13,
-    "id": "2604.13602",
-    "url": "https://arxiv.org/html/2604.13602",
-    "title": "Reward Hacking in the Era of Large Models: Mechanisms, Emergent Misalignment, Challenges",
-    "date": "2026-04-20",
-    "source": "web"
-  },
-  {
-    "n": 14,
-    "id": "2409.12917",
-    "url": "https://huggingface.co/papers/2409.12917",
-    "title": "SCoRe: Training Language Models to Self-Correct via Reinforcement Learning",
-    "date": "2024-09-19",
-    "source": "hf-search"
-  },
-  {
-    "n": 15,
+    "n": 6,
     "id": "2502.08235",
     "url": "https://huggingface.co/papers/2502.08235",
     "title": "The Danger of Overthinking: Examining the Reasoning-Action Dilemma in Agentic Tasks",
@@ -120,7 +48,7 @@
     "source": "hf-search"
   },
   {
-    "n": 16,
+    "n": 7,
     "id": "2602.05281",
     "url": "https://huggingface.co/papers/2602.05281",
     "title": "Back to Basics: Revisiting Exploration in Reinforcement Learning for LLM Reasoning via Generative Probabilities",
@@ -128,12 +56,84 @@
     "source": "hf-search"
   },
   {
-    "n": 17,
+    "n": 8,
     "id": "2609.35433",
     "url": "https://huggingface.co/papers/2609.35433",
     "title": "ReSPO: Reshaped Sequence Policy Optimization for Gradient Starvation in Off-Policy Learning",
     "date": "2026-09-28",
     "source": "hf-daily"
+  },
+  {
+    "n": 9,
+    "id": "2507.04136",
+    "url": "https://dl.acm.org/doi/full/10.1145/3834858",
+    "title": "A Technical Survey of Reinforcement Learning Techniques for Large Language Models",
+    "date": "2026-09-29",
+    "source": "web"
+  },
+  {
+    "n": 10,
+    "id": "lightman2023letsverify",
+    "url": "https://cdn.openai.com/improving-mathematical-reasoning-with-process-supervision/Lets%5FVerify%5FStep%5Fby%5FStep.pdf",
+    "title": "Let’s Verify Step by Step",
+    "date": "2023-05-31",
+    "source": "web"
+  },
+  {
+    "n": 11,
+    "id": "2508.08221",
+    "url": "https://arxiv.org/html/2508.08221",
+    "title": "Part I: Tricks or Traps? A Deep Dive into RL for LLM Reasoning",
+    "date": "2025-08-11",
+    "source": "web"
+  },
+  {
+    "n": 12,
+    "id": "2026.acl-long.163",
+    "url": "https://aclanthology.org/2026.acl-long.163.pdf",
+    "title": "A Survey of Process Reward Models: From Outcome Signals to Process Supervisions for Large Language Models",
+    "date": "2026-01-01",
+    "source": "web"
+  },
+  {
+    "n": 13,
+    "id": "2406.06592",
+    "url": "https://huggingface.co/papers/2406.06592",
+    "title": "Improve Mathematical Reasoning in Language Models by Automated Process Supervision",
+    "date": "2024-06-05",
+    "source": "hf-search"
+  },
+  {
+    "n": 14,
+    "id": "2506.10947",
+    "url": "https://huggingface.co/papers/2506.10947",
+    "title": "Spurious Rewards: Rethinking Training Signals in RLVR",
+    "date": "2025-06-12",
+    "source": "hf-search"
+  },
+  {
+    "n": 15,
+    "id": "2510.00915v3",
+    "url": "https://arxiv.org/html/2510.00915v3",
+    "title": "Reinforcement Learning with Verifiable yet Noisy Rewards under Imperfect Verifiers",
+    "date": "2025-10-01",
+    "source": "web"
+  },
+  {
+    "n": 16,
+    "id": "2509.09284",
+    "url": "https://huggingface.co/papers/2509.09284",
+    "title": "Tree-OPO: Off-policy Monte Carlo Tree-Guided Advantage Optimization for Multistep Reasoning",
+    "date": "2025-09-11",
+    "source": "hf-search"
+  },
+  {
+    "n": 17,
+    "id": "2604.13602",
+    "url": "https://arxiv.org/html/2604.13602",
+    "title": "Reward Hacking in the Era of Large Models: Mechanisms, Emergent Misalignment, Challenges",
+    "date": "2026-04-20",
+    "source": "web"
   },
   {
     "n": 18,
@@ -145,18 +145,18 @@
   },
   {
     "n": 19,
+    "id": "2409.12917",
+    "url": "https://huggingface.co/papers/2409.12917",
+    "title": "SCoRe: Training Language Models to Self-Correct via Reinforcement Learning",
+    "date": "2024-09-19",
+    "source": "hf-search"
+  },
+  {
+    "n": 20,
     "id": "2610.11959",
     "url": "https://huggingface.co/papers/2610.11959",
     "title": "MiMo-V2.6: Scaling Reinforcement Learning Towards Self-Improvement",
     "date": "2026-10-08",
     "source": "hf-daily"
-  },
-  {
-    "n": 20,
-    "id": "2506.10947",
-    "url": "https://huggingface.co/papers/2506.10947",
-    "title": "Spurious Rewards: Rethinking Training Signals in RLVR",
-    "date": "2025-06-12",
-    "source": "hf-search"
   }
 ]

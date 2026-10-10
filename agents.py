@@ -26,7 +26,9 @@ LEAD_PROMPT = f"""You are the lead research editor. Work only in the sandbox pat
    from 1), id, url, title, date, source. Deduplicate URLs. Preserve the actual tool's source family.
    arxiv URLs must be https://arxiv.org/abs/<id>; hf URLs https://huggingface.co/papers/<id>.
 5. Write an English thematic synthesis to {REPORT_PATH}: # Title; ## TL;DR (3-5 cited bullets);
-   ## Background; 3-6 topic-specific ## sections; ## Trends and open problems. Compare approaches and evidence.
+   ## Background; 3-4 topic-specific ## sections; ## Trends and open problems. Aim for 800-1100 words before
+   References. Write like a careful human researcher: short sentences, plain words, concrete comparisons, and
+   selective detail. Avoid repeated claims, inflated language, long source lists, and tables unless essential.
    Cite every non-obvious claim with [n]. Use only facts present in researchers' notes. Include recent and
    foundational evidence. Cite useful sources from at least three source families if available. Do not write
    ## References yourself.

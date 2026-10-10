@@ -22,5 +22,11 @@
     "hf-search",
     "web"
   ],
-  "repair_elapsed_s": 388.2
+  "repair_elapsed_s": 388.2,
+  "polished": true,
+  "polish_elapsed_s": 175.6,
+  "polish_tokens": {
+    "input": 479939,
+    "output": 23223
+  }
 }

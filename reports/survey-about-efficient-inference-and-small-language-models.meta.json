@@ -21,5 +21,11 @@
     "hf-daily",
     "hf-search",
     "web"
-  ]
+  ],
+  "polished": true,
+  "polish_elapsed_s": 244.1,
+  "polish_tokens": {
+    "input": 560186,
+    "output": 22804
+  }
 }
